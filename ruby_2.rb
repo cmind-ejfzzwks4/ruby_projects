@@ -27,3 +27,19 @@ profile = { name: "orihara", birthday: "1900/04/01", blood_type: "B" }
 p profile[:name]
 p profile[:birthday]
 p profile[:blood_type]
+
+# 8.渡された文字列に「ruby」を足して返すメソッドを作成しましょう。
+def plus_ruby(message)
+  message + "ruby"
+end
+
+p plus_ruby("like")
+p plus_ruby("yhee")
+
+# 9.渡された数字に1を足して返すメソッドを作成しましょう。
+def plus_one(num)
+  num.next
+end
+
+p plus_one(4)
+p plus_one(10)
