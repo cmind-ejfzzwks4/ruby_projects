@@ -60,3 +60,128 @@ end
 
 print_fruits("リンゴ")
 print_fruits("バナナ")
+
+# クラスメソッドの呼び出し
+class Animal
+  def self.greet
+    p "こんにちは！Animalです！"
+  end
+end
+
+Animal.greet
+
+# インスタンス作成
+animal = Animal.new
+# クラスメソッドは、インスタンスから呼び出せない（エラー）
+# animal.greet
+
+# インスタンスメソッドの呼び出し
+class Animal
+  def greet
+    p "こんにちは！Animalのインスタンスです！"
+  end 
+end
+
+animal = Animal.new
+animal.greet
+
+# イニシャライズメソッド（コンストラクタ）
+# クラスから、インスタンスを作成するときに共通の処理を行いたいときに使う
+# インスタンスが作成された(newメソッドが実行された)タイミングで呼ばれるメソッド
+class Animal
+  def initialize
+    p "インスタンスが作られました"
+  end
+end
+
+animal = Animal.new
+
+# クラス変数
+# クラスと、そのクラスからできたインスタンスから、呼び出すことができます。
+class Animal
+  @@counter = 0
+
+  def initialize
+    @@counter += 1
+  end
+  
+  def self.get_counter
+    return @@counter
+  end
+end
+
+# クラス内で値が共有
+Animal.new
+p Animal.get_counter
+
+Animal.new
+p Animal.get_counter
+
+Animal.new
+p Animal.get_counter
+
+Animal.new
+p Animal.get_counter
+
+
+# インスタンス変数
+class Animal
+
+  def name=(value)
+    @name = value
+  end
+
+  def name
+    @name
+  end
+
+end
+
+animal = Animal.new
+animal.name = "サル"
+p animal.name
+
+animal2 = Animal.new
+animal2.name = "ゾウ"
+p animal2.name
+
+p animal.name
+
+# セッター
+def name=(value)
+  @name = value
+end
+
+animal.name = "サル"
+
+# ゲッター
+def name
+  @name
+end
+
+animal.name
+
+# attr_accessorでゲッター、セッターの一括設定
+class Animal
+  attr_accessor :name
+end
+
+animal = Animal.new
+animal.name = "サル"
+p animal.name
+
+# 継承
+class Animal
+  def self.greet
+    p "こんにちは！Animalです！"
+  end
+end
+
+class Dog < Animal
+  def self.bow
+    p "BowBow"
+  end
+end
+
+Dog.greet
+Dog.bow
